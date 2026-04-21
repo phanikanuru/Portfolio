@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Phani Kanuru | Software Engineer</title>
+  <meta name="description" content="Full-Stack Software Engineer at JP Morgan Chase."/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#141414;font-family:Arial,sans-serif}
+    ::-webkit-scrollbar{width:4px}
+    ::-webkit-scrollbar-track{background:#141414}
+    ::-webkit-scrollbar-thumb{background:#e50914;border-radius:2px}
+    div::-webkit-scrollbar{display:none}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const PHOTO = "data:image/jpeg;base64,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";
+
+    const experience = [
+      { id:"01", company:"JP Morgan Chase", role:"Software Engineer", period:"June 2025 – Present", location:"Chicago, IL",
+        tags:[".NET Core","Kafka","Angular","PostgreSQL"],
+        highlights:["Designed secure RESTful microservices, reducing response time by ~30%.","Architected event-driven workflows with Apache Kafka — retry logic & dead-letter queues.","Streamlined CI/CD with Jenkins, GitHub Actions & SonarQube — cut deployment incidents by 20%.","Established SLOs and distributed tracing, achieving 15% decrease in MTTR.","Pioneered Angular dashboards with role-based UI modules backed by PostgreSQL."]},
+      { id:"02", company:"Optum (UnitedHealth Group)", role:"Software Engineer", period:"Aug 2024 – May 2025", location:"Eden Prairie, MN",
+        tags:["Java Spring Boot","Go","AWS EKS","Kafka","React"],
+        highlights:["Migrated legacy apps to AWS EKS — reduced provisioning time by 25%.","Designed HIPAA-compliant APIs with async messaging via SQS & Lambda.","Elevated test coverage beyond 85% across 10+ services, reducing incidents by 12%.","Delivered React + TypeScript RBAC features, reducing access errors by ~30%."]},
+      { id:"03", company:"GMR Group", role:"Software Engineer", period:"Jan 2021 – Jul 2023", location:"Hyderabad, India",
+        tags:["React","Node.js","C++","OAuth2"],
+        highlights:["Built full-stack apps using React, Node.js & Express serving 10K+ monthly users.","Engineered Win32 utilities with zero-downtime blue-green deployments.","Led incident coordination, reducing average resolution time by 30%."]},
+    ];
+
+    const education = [
+      { degree:"M.S. in Information Technology", school:"University of Cincinnati", location:"Cincinnati, OH", period:"2023 – 2024" },
+      { degree:"B.Tech in Information Technology", school:"PVP Siddhartha Institute of Technology", location:"Vijayawada, India", period:"2017 – 2021" },
+    ];
+
+    const skillRows = [
+      { category:"Languages", items:["Java 11/17","C#","Python","Go","TypeScript","Kotlin","Bash","SQL","C++"] },
+      { category:"Backend", items:["Spring Boot",".NET Core","ASP.NET Core","Node.js","gRPC","GraphQL","Django","Express"] },
+      { category:"Cloud & DevOps", items:["AWS EKS","AWS Lambda","AWS S3","Azure AKS","Kubernetes","Docker","Terraform","GitHub Actions","Jenkins"] },
+      { category:"Frontend", items:["React","Angular","Redux","Next.js","Tailwind CSS","Material UI","TypeScript"] },
+      { category:"Databases", items:["PostgreSQL","MongoDB","DynamoDB","Cassandra","MySQL","SQL Server","Redis"] },
+      { category:"Messaging & Observability", items:["Apache Kafka","AWS SQS","RabbitMQ","Grafana","Prometheus","Splunk","ELK Stack"] },
+    ];
+
+    function Nav({ active, setActive }) {
+      const [scrolled, setScrolled] = useState(false);
+      useEffect(() => {
+        const h = () => setScrolled(window.scrollY > 20);
+        window.addEventListener("scroll", h);
+        return () => window.removeEventListener("scroll", h);
+      }, []);
+      return (
+        <nav style={{ position:"fixed", top:0, left:0, right:0, zIndex:200, display:"flex", justifyContent:"space-between", alignItems:"center", padding:"14px 48px", background: scrolled?"#141414":"linear-gradient(to bottom,rgba(0,0,0,0.85),transparent)", transition:"background 0.3s" }}>
+          <button onClick={() => setActive("home")} style={{ background:"none", border:"none", cursor:"pointer", fontFamily:"'Arial Black',Arial,sans-serif", fontSize:26, fontWeight:900, color:"#e50914", textTransform:"uppercase" }}>PhaniK</button>
+          <div style={{ display:"flex", gap:28 }}>
+            {["home","experience","skills","contact"].map(item => (
+              <button key={item} onClick={() => setActive(item)} style={{ background:"none", border:"none", cursor:"pointer", fontSize:13, fontWeight: active===item?700:400, letterSpacing:1, textTransform:"uppercase", color: active===item?"#fff":"rgba(255,255,255,0.6)", borderBottom: active===item?"2px solid #e50914":"2px solid transparent", paddingBottom:2, transition:"color 0.2s" }}>{item}</button>
+            ))}
+          </div>
+        </nav>
+      );
+    }
+
+    function Home({ setActive }) {
+      const [on, setOn] = useState(false);
+      useEffect(() => { setTimeout(() => setOn(true), 80); }, []);
+      return (
+        <section style={{ height:"100vh", position:"relative", display:"flex", alignItems:"center", overflow:"hidden", background:"#000" }}>
+          <div style={{ position:"absolute", right:0, top:0, bottom:0, width:"52%", zIndex:1 }}>
+            <img src={PHOTO} alt="Phani Kanuru" style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center top", filter:"brightness(0.65)" }}/>
+            <div style={{ position:"absolute", inset:0, background:"linear-gradient(to right,#000 0%,rgba(0,0,0,0.55) 40%,rgba(0,0,0,0.05) 100%)" }}/>
+            <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,#141414 0%,transparent 40%)" }}/>
+          </div>
+          <div style={{ position:"relative", zIndex:2, padding:"0 48px", maxWidth:600, opacity:on?1:0, transform:on?"translateY(0)":"translateY(30px)", transition:"opacity 0.9s,transform 0.9s" }}>
+            <div style={{ display:"inline-flex", marginBottom:20 }}>
+              <div style={{ background:"#e50914", color:"#fff", fontFamily:"'Arial Black',sans-serif", fontWeight:900, fontSize:11, letterSpacing:3, padding:"3px 10px" }}>PROFILE</div>
+            </div>
+            <h1 style={{ fontFamily:"'Arial Black',Impact,sans-serif", fontSize:"clamp(52px,7vw,88px)", color:"#fff", fontWeight:900, lineHeight:1, letterSpacing:-2, textShadow:"2px 4px 24px rgba(0,0,0,0.8)", marginBottom:12 }}>
+              Phani<br/><span style={{ color:"#e50914" }}>Kanuru</span>
+            </h1>
+            <p style={{ fontSize:16, color:"rgba(255,255,255,0.75)", lineHeight:1.6, marginBottom:10, maxWidth:460 }}>
+              <span style={{ color:"#e50914", fontWeight:700 }}>Full-Stack Software Engineer</span> · JP Morgan Chase
+            </p>
+            <p style={{ fontSize:14, color:"rgba(255,255,255,0.5)", lineHeight:1.7, marginBottom:32, maxWidth:460 }}>
+              5+ years building distributed systems, microservices, and cloud-native infrastructure.
+            </p>
+            <div style={{ display:"flex", gap:14 }}>
+              <button onClick={() => setActive("experience")} onMouseOver={e=>{e.currentTarget.style.background="rgba(255,255,255,0.85)"}} onMouseOut={e=>{e.currentTarget.style.background="#fff"}} style={{ display:"flex", alignItems:"center", gap:8, padding:"12px 28px", background:"#fff", color:"#141414", fontSize:16, fontWeight:700, border:"none", cursor:"pointer", borderRadius:4, transition:"all 0.2s" }}>
+                <span>▶</span> View Profile
+              </button>
+              <button onClick={() => setActive("contact")} onMouseOver={e=>{e.currentTarget.style.background="rgba(109,109,110,0.5)"}} onMouseOut={e=>{e.currentTarget.style.background="rgba(109,109,110,0.7)"}} style={{ display:"flex", alignItems:"center", gap:8, padding:"12px 28px", background:"rgba(109,109,110,0.7)", color:"#fff", fontSize:16, fontWeight:700, border:"none", cursor:"pointer", borderRadius:4, transition:"all 0.2s" }}>
+                <span>ⓘ</span> More Info
+              </button>
+            </div>
+            <div style={{ display:"flex", gap:10, marginTop:28, flexWrap:"wrap" }}>
+              {[".NET Core","Java","Kafka","AWS","React","Kubernetes"].map(t => (
+                <span key={t} style={{ fontSize:11, color:"rgba(255,255,255,0.5)", border:"1px solid rgba(255,255,255,0.2)", padding:"3px 10px", borderRadius:2 }}>{t}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function ExpCard({ item, isOpen, onClick }) {
+      return (
+        <div onClick={onClick} onMouseOver={e=>{ if(!isOpen) e.currentTarget.style.border="1px solid rgba(255,255,255,0.2)"; }} onMouseOut={e=>{ if(!isOpen) e.currentTarget.style.border="1px solid rgba(255,255,255,0.07)"; }} style={{ background:isOpen?"#1f1f1f":"#181818", border:`1px solid ${isOpen?"#e50914":"rgba(255,255,255,0.07)"}`, borderRadius:6, cursor:"pointer", transition:"all 0.25s", overflow:"hidden" }}>
+          <div style={{ padding:"24px 28px" }}>
+            <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start" }}>
+              <div>
+                <div style={{ fontSize:11, color:"#e50914", letterSpacing:2, marginBottom:6, textTransform:"uppercase" }}>{item.period}</div>
+                <h3 style={{ fontFamily:"'Arial Black',sans-serif", fontSize:20, color:"#fff", fontWeight:900, margin:"0 0 4px" }}>{item.company}</h3>
+                <p style={{ fontSize:13, color:"rgba(255,255,255,0.5)", margin:0 }}>{item.role} · {item.location}</p>
+              </div>
+              <div style={{ width:32, height:32, borderRadius:"50%", background:isOpen?"#e50914":"rgba(255,255,255,0.1)", display:"flex", alignItems:"center", justifyContent:"center", color:"#fff", fontSize:16, flexShrink:0, transition:"all 0.2s", transform:isOpen?"rotate(180deg)":"rotate(0deg)" }}>▾</div>
+            </div>
+            <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginTop:14 }}>
+              {item.tags.map(t => <span key={t} style={{ fontSize:12, background:"rgba(229,9,20,0.15)", color:"#e50914", border:"1px solid rgba(229,9,20,0.3)", padding:"3px 10px", borderRadius:2 }}>{t}</span>)}
+            </div>
+          </div>
+          {isOpen && (
+            <div style={{ padding:"0 28px 24px", borderTop:"1px solid rgba(255,255,255,0.07)" }}>
+              <ul style={{ listStyle:"none", padding:0, margin:"16px 0 0" }}>
+                {item.highlights.map((h,i) => (
+                  <li key={i} style={{ display:"flex", gap:12, marginBottom:12 }}>
+                    <span style={{ color:"#e50914", fontSize:14, flexShrink:0 }}>▸</span>
+                    <span style={{ fontSize:13, color:"rgba(255,255,255,0.65)", lineHeight:1.7 }}>{h}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    function Experience() {
+      const [open, setOpen] = useState(0);
+      return (
+        <section style={{ minHeight:"100vh", background:"#141414", padding:"100px 48px 80px" }}>
+          <p style={{ fontSize:11, letterSpacing:3, color:"#e50914", marginBottom:10, textTransform:"uppercase" }}>— Now Streaming</p>
+          <h2 style={{ fontFamily:"'Arial Black',sans-serif", fontSize:"clamp(28px,4vw,44px)", color:"#fff", fontWeight:900, marginBottom:32 }}>Experience</h2>
+          <div style={{ display:"flex", flexDirection:"column", gap:12, maxWidth:860 }}>
+            {experience.map((e,i) => <ExpCard key={e.id} item={e} isOpen={open===i} onClick={() => setOpen(open===i?-1:i)}/>)}
+          </div>
+          <div style={{ marginTop:64 }}>
+            <p style={{ fontSize:11, letterSpacing:3, color:"#e50914", marginBottom:10, textTransform:"uppercase" }}>— Origins</p>
+            <h3 style={{ fontFamily:"'Arial Black',sans-serif", fontSize:22, color:"#fff", fontWeight:900, marginBottom:24 }}>Education</h3>
+            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16, maxWidth:860 }}>
+              {education.map(ed => (
+                <div key={ed.school} style={{ background:"#181818", border:"1px solid rgba(255,255,255,0.07)", borderRadius:6, padding:"24px 28px" }}>
+                  <div style={{ fontSize:11, color:"#e50914", letterSpacing:2, marginBottom:8, textTransform:"uppercase" }}>{ed.period}</div>
+                  <div style={{ fontFamily:"'Arial Black',sans-serif", fontSize:16, color:"#fff", fontWeight:900, marginBottom:6 }}>{ed.degree}</div>
+                  <div style={{ fontSize:13, color:"rgba(255,255,255,0.5)" }}>{ed.school}</div>
+                  <div style={{ fontSize:12, color:"rgba(255,255,255,0.3)", marginTop:4 }}>{ed.location}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Skills() {
+      const [hov, setHov] = useState(null);
+      return (
+        <section style={{ minHeight:"100vh", background:"#141414", padding:"100px 48px 80px" }}>
+          <p style={{ fontSize:11, letterSpacing:3, color:"#e50914", marginBottom:10, textTransform:"uppercase" }}>— Tech Stack</p>
+          <h2 style={{ fontFamily:"'Arial Black',sans-serif", fontSize:"clamp(28px,4vw,44px)", color:"#fff", fontWeight:900, marginBottom:8 }}>Skills & Tools</h2>
+          <p style={{ fontSize:14, color:"rgba(255,255,255,0.4)", marginBottom:40 }}>Hover to highlight · Scroll rows to explore</p>
+          {skillRows.map(row => (
+            <div key={row.category} style={{ marginBottom:36 }}>
+              <h3 style={{ fontSize:15, fontWeight:700, color:"rgba(255,255,255,0.7)", marginBottom:14 }}>{row.category}</h3>
+              <div style={{ display:"flex", gap:10, overflowX:"auto", paddingBottom:8 }}>
+                {row.items.map(item => (
+                  <div key={item} onMouseEnter={()=>setHov(item)} onMouseLeave={()=>setHov(null)} style={{ flexShrink:0, background:hov===item?"#e50914":"#1f1f1f", border:`1px solid ${hov===item?"#e50914":"rgba(255,255,255,0.1)"}`, borderRadius:4, padding:"10px 18px", fontSize:13, color:hov===item?"#fff":"rgba(255,255,255,0.7)", cursor:"default", transition:"all 0.18s", transform:hov===item?"scale(1.06)":"scale(1)" }}>{item}</div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <div style={{ marginTop:24, paddingTop:40, borderTop:"1px solid rgba(255,255,255,0.07)" }}>
+            <p style={{ fontSize:11, letterSpacing:3, color:"#e50914", marginBottom:20, textTransform:"uppercase" }}>— Credentials</p>
+            <div style={{ display:"flex", gap:16, flexWrap:"wrap" }}>
+              {[{name:"AWS Certified Solutions Architect",level:"Associate",icon:"☁️"},{name:"Oracle Certified Java SE 11",level:"Developer",icon:"☕"}].map(c => (
+                <div key={c.name} style={{ background:"#1f1f1f", border:"1px solid rgba(229,9,20,0.25)", borderRadius:6, padding:"18px 24px", display:"flex", alignItems:"center", gap:14 }}>
+                  <span style={{ fontSize:22 }}>{c.icon}</span>
+                  <div>
+                    <div style={{ fontFamily:"'Arial Black',sans-serif", fontSize:13, color:"#fff", fontWeight:700 }}>{c.name}</div>
+                    <div style={{ fontSize:11, color:"#e50914", marginTop:4 }}>{c.level}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Contact() {
+      const [copied, setCopied] = useState(false);
+      const email = "Phani.tech11@gmail.com";
+      const copy = () => { navigator.clipboard.writeText(email); setCopied(true); setTimeout(()=>setCopied(false),2000); };
+      return (
+        <section style={{ minHeight:"100vh", background:"#141414", display:"flex", flexDirection:"column", justifyContent:"center", padding:"100px 48px 80px", position:"relative", overflow:"hidden" }}>
+          <div style={{ position:"absolute", top:"50%", left:"50%", transform:"translate(-50%,-50%)", width:600, height:600, background:"radial-gradient(circle,rgba(229,9,20,0.08) 0%,transparent 70%)", pointerEvents:"none" }}/>
+          <div style={{ maxWidth:620, position:"relative", zIndex:1 }}>
+            <p style={{ fontSize:11, letterSpacing:3, color:"#e50914", marginBottom:10, textTransform:"uppercase" }}>— Get In Touch</p>
+            <h2 style={{ fontFamily:"'Arial Black',sans-serif", fontSize:"clamp(28px,5vw,60px)", color:"#fff", fontWeight:900, letterSpacing:-1, marginBottom:20 }}>Let's Build<br/>Something Great.</h2>
+            <p style={{ fontSize:15, lineHeight:1.8, color:"rgba(255,255,255,0.45)", marginBottom:56, maxWidth:480 }}>Open to senior full-stack or backend-leaning engineering roles where systems are complex and ownership is real. I respond within 48 hours.</p>
+            <div style={{ display:"flex", alignItems:"stretch", marginBottom:40, border:"1px solid rgba(255,255,255,0.1)", borderRadius:4, overflow:"hidden" }}>
+              <span style={{ fontSize:14, color:"#fff", flex:1, padding:"16px 20px", background:"#1f1f1f" }}>{email}</span>
+              <button onClick={copy} style={{ fontSize:12, fontWeight:700, letterSpacing:1, padding:"16px 22px", background:copied?"#2ecc71":"#e50914", color:"#fff", border:"none", cursor:"pointer", textTransform:"uppercase", transition:"background 0.2s", whiteSpace:"nowrap" }}>{copied?"✓ Copied":"Copy"}</button>
+            </div>
+            <div style={{ display:"flex", gap:24, flexWrap:"wrap" }}>
+              {[
+                {label:"GitHub", href:"https://github.com/phanikanuru"},
+                {label:"LinkedIn", href:"https://linkedin.com/in/phani-kanuru1t478"},
+                {label:"+1 331 213 8674", href:"tel:+13312138674"},
+              ].map(s => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" onMouseOver={e=>{e.currentTarget.style.color="#e50914";e.currentTarget.style.borderColor="#e50914"}} onMouseOut={e=>{e.currentTarget.style.color="rgba(255,255,255,0.45)";e.currentTarget.style.borderColor="rgba(255,255,255,0.15)"}} style={{ fontSize:13, color:"rgba(255,255,255,0.45)", textDecoration:"none", borderBottom:"1px solid rgba(255,255,255,0.15)", paddingBottom:2, transition:"color 0.2s,border-color 0.2s" }}>{s.label} ↗</a>
+              ))}
+            </div>
+          </div>
+          <div style={{ position:"absolute", bottom:32, left:48, right:48, display:"flex", justifyContent:"space-between", borderTop:"1px solid rgba(255,255,255,0.07)", paddingTop:20 }}>
+            <span style={{ fontSize:11, color:"rgba(255,255,255,0.18)", letterSpacing:1 }}>© 2026 PHANI KANURU</span>
+            <span style={{ fontSize:11, color:"rgba(229,9,20,0.5)", letterSpacing:1 }}>CHICAGO, IL · OPEN TO WORK</span>
+          </div>
+        </section>
+      );
+    }
+
+    function App() {
+      const [active, setActive] = useState("home");
+      const render = () => {
+        if (active==="home") return <Home setActive={setActive}/>;
+        if (active==="experience") return <Experience/>;
+        if (active==="skills") return <Skills/>;
+        if (active==="contact") return <Contact/>;
+      };
+      return (
+        <div style={{ background:"#141414", minHeight:"100vh", color:"#fff" }}>
+          <Nav active={active} setActive={setActive}/>
+          {render()}
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>
